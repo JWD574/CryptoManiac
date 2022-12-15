@@ -23,7 +23,7 @@ struct CircleButtonView: View {
             )
             .shadow(
                 color: Color.theme.accent.opacity(0.50),
-                radius: 15, x: 0, y: 0)
+                radius: 20, x: 0, y: 0)
             .padding( )
     }
 }
@@ -36,7 +36,7 @@ struct CircleButtonView_Previews: PreviewProvider {
             
             CircleButtonView(iconName: "plus")
                 .previewLayout(.sizeThatFits)
-                .colorScheme(.dark)
+                .preferredColorScheme(.dark)
         }
     }
 }
