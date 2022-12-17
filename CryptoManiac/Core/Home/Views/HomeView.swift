@@ -15,14 +15,20 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
+            
             //MARK: BACKGROUND LAYER
             Color.theme.background
                 .ignoresSafeArea()
+            
+            
+            
             //MARK:  CONTENT LAYER
             VStack {
                 //MARK:  HEADER AREA WITH CIRCLE BUTTONS
                 homeHeader
                 
+                //MARK: SEARCH BAR
+                SearchBarView(searchText:$vm.searchText)
                 //MARK:  LIST HEADER { COIN  - HOLDINGS - PRICE }
                 columnTitles
                 
@@ -120,6 +126,8 @@ class HomeViewModel: ObservableObject {
     
     @Published var allCoins: [Coin] = [ ]
     @Published var portfolioCoins: [Coin] = [ ]
+    
+    @Published var searchText: String = ""
     
     private let dataService = CoinDataService( )
     private var cancellables =  Set<AnyCancellable>( )
