@@ -36,6 +36,7 @@
 		50C8135C294E8F2D0052A696 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8135B294E8F2D0052A696 /* StatisticsModel.swift */; };
 		50C8135E294E92200052A696 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8135D294E92200052A696 /* StatisticView.swift */; };
 		50C81360294E9EE30052A696 /* HomeStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8135F294E9EE30052A696 /* HomeStatsView.swift */; };
+		50C81362294F79A90052A696 /* MarketDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81361294F79A90052A696 /* MarketDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		50C8135B294E8F2D0052A696 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		50C8135D294E92200052A696 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		50C8135F294E9EE30052A696 /* HomeStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatsView.swift; sourceTree = "<group>"; };
+		50C81361294F79A90052A696 /* MarketDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,17 +224,9 @@
 		50AE9827294AA1C90011EAEF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				50AE9828294AA1DF0011EAEF /* ViewModels */,
 				50AE9821294A9ED30011EAEF /* Views */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		50AE9828294AA1DF0011EAEF /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		50AE982B294AA2F20011EAEF /* Components */ = {
@@ -260,6 +254,7 @@
 			children = (
 				50C8134E294CC11D0052A696 /* CoinDataService.swift */,
 				50C81355294D600C0052A696 /* CoinImageService.swift */,
+				50C81361294F79A90052A696 /* MarketDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -408,6 +403,7 @@
 				50C8135C294E8F2D0052A696 /* StatisticsModel.swift in Sources */,
 				50AE982A294AA1F90011EAEF /* HomeView.swift in Sources */,
 				50C81354294D49D10052A696 /* CoinImageView.swift in Sources */,
+				50C81362294F79A90052A696 /* MarketDataService.swift in Sources */,
 				50AE97F6294A8FB50011EAEF /* CryptoManiacApp.swift in Sources */,
 				50AE9842294AE81B0011EAEF /* PreviewProvider.swift in Sources */,
 				50AE9838294AE6600011EAEF /* MarketDataModel.swift in Sources */,
