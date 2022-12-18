@@ -22,11 +22,12 @@ struct HomeView: View {
             
             
             
-            //MARK:  CONTENT LAYER
-            VStack {
+                //MARK:  CONTENT LAYER
+                VStack {
                 //MARK:  HEADER AREA WITH CIRCLE BUTTONS
                 homeHeader
-                
+                //MARK:  HOME STATS
+                HomeStatsView(showPortfolio: $showPortfolio)
                 //MARK: SEARCH BAR
                 SearchBarView(searchText:$vm.searchText)
                 //MARK:  LIST HEADER { COIN  - HOLDINGS - PRICE }
@@ -124,6 +125,13 @@ extension HomeView {
 //MARK:  HOMEVIEW MODEL
 class HomeViewModel: ObservableObject {
     
+    @Published var statistics: [StatisticModel] = [
+        StatisticModel(title: "Title", value: "Value", percentageChange: 1),
+        StatisticModel(title: "Title", value: "Value"),
+        StatisticModel(title: "Title", value: "Value"),
+        StatisticModel(title: "Title", value: "Value", percentageChange: -7)
+        ]
+    
     @Published var allCoins: [Coin] = [ ]
     @Published var portfolioCoins: [Coin] = [ ]
     
@@ -139,14 +147,30 @@ class HomeViewModel: ObservableObject {
         //            self.allCoins.append(DeveloperPreview.instance.coin)
         //            self.portfolioCoins.append(DeveloperPreview.instance.coin)
     }
-    //MARK:  SUBSCRIBER FUNCTION
+    //MARK:  SUBSCRIBER FUNCTION (SEARCH BAR FILTER)
     
     func addSubscriber( ) {
-        
-        dataService.$allCoins
+        //UPDATES ALL COINS
+        $searchText
+            .combineLatest(dataService.$allCoins)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .map(filterCoins)
             .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }
             .store(in: &cancellables)
+    }
+    
+    private func filterCoins(text: String, coins:  [Coin])  -> [Coin]  {
+        guard !text.isEmpty else {
+            return coins
+        }
+        let lowercasedText = text.lowercased()
+        
+        return coins.filter { (coin) -> Bool in
+            return coin.name.lowercased().contains(lowercasedText) ||
+            coin.symbol.lowercased().contains(lowercasedText)  ||
+            coin.id.lowercased().contains(lowercasedText)
+        }
     }
 }
